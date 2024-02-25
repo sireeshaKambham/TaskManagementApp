@@ -1,0 +1,94 @@
+@import './common.scss';
+// color-codes
+$primary_color: #1a7b99;
+$color-red:#d32f2f;
+
+// mixins 
+.bg-color {
+    background-color: $primary_color !important;
+}
+.color {
+    color: $primary_color !important;
+}
+
+// App bar styles starts here
+    .app-bar {
+        @extend .bg-color;
+    }
+// App bar styles end 
+
+// search box styles starts here
+.search-box{
+    margin-top: -50px !important;
+}
+// search box styles end
+
+// Nav bar styles starts here
+.navbar-tabs {
+    .active {
+        color:$primary_color;
+        text-decoration: underline;
+    }
+}
+// Nav bar styles end
+
+// Card styles starts here
+.card-padding {
+    padding: 16px 16px 8px 16px;
+}
+.delete-button {
+    float: right;
+    &:hover {
+        color:$color-red;
+    }
+}
+// Card styles end
+
+// Common styles starts here
+.cursor-pointer {
+    cursor: pointer;
+}
+.error-text {
+    color: $color-red !important;
+}
+.label-custom {
+    font-weight: 600;
+}
+
+.MuiButton-containedPrimary {
+    @extend .bg-color;
+}
+.MuiButton-outlinedPrimary {
+    @extend .color;
+    :hover {
+        border-color:  $primary_color !important;
+    }
+}
+.text-ellipsis {
+    width: 300px; /* Set the maximum width of your container */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) to indicate truncated text */
+    &:hover {
+        overflow: visible;
+        width: auto;
+        white-space: normal;
+      }
+  }
+  // Common styles end
+
+// media queries    
+@media screen and (max-width: 769px) {
+    .search-box{
+        margin-top: 0px !important;
+        margin-left: -35px !important;      
+    }
+    .app-bar {
+        .app-name {
+            font-size: 1rem;
+        }
+    }
+    .label-custom,.MuiTypography-h6 {
+        font-size: 0.9rem !important;
+    }
+}
