@@ -16,7 +16,6 @@ import { useId } from "react";
 import { TaskContext } from "../context/ContextStore";
 
 const AddTask = () => {
-  const [error, setError] = useState(true);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [status, setStatus] = useState("");
@@ -26,21 +25,22 @@ const AddTask = () => {
   const { t } = useTranslation();
   const taskList = useContext(TaskContext);
 
+  // Function to handle title value
   const handleTitle = (event) => {
     setTitle(event.target.value);
-    if (title === "" || title === null) {
-      setError(true);
-    }
-    setError(false);
-    console.log(title);
   };
 
+  // Function to handle description value
   const handleDesc = (event) => {
     setDesc(event?.target.value);
   };
+
+  //// Function to handle status value
   const handleStatus = (status) => {
     setStatus(status);
   };
+
+  //// Function to navigate back
   const handleBack = () => {
     navigate(routes.list);
   };
@@ -57,6 +57,7 @@ const AddTask = () => {
     setTaskObj(taskObjUpdated);
   }, [title, desc, status]);
 
+  // Function to handle submit data
   const handleSubmt = () => {
     const updatedTasks = taskList.task;
     updatedTasks.push(taskObj as any);
@@ -84,7 +85,7 @@ const AddTask = () => {
             onChange={handleTitle}
             placeholder="Add title"
           />
-          {error && (
+          {!title && (
             <FormHelperText sx={{ mt: 0, ml: 1, mb: 1 }} className="error-text">
               {t("validation.title_required")}
             </FormHelperText>
@@ -123,6 +124,7 @@ const AddTask = () => {
               variant="contained"
               onClick={handleSubmt}
               buttonText={t("tasks.add_task")}
+              disabled={!title}
             />
             <BasicButton
               variant="outlined"

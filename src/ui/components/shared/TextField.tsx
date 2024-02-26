@@ -6,6 +6,7 @@ interface ITextField {
   label: string;
   onChange?: any;
   placeholder?: string;
+  autoFocus?:boolean;
 }
 
 const BasicTextFields: React.FC<ITextField> = (props) => {
@@ -24,6 +25,7 @@ const BasicTextFields: React.FC<ITextField> = (props) => {
         label={props.label}
         variant="outlined"
         onChange={props.onChange}
+        autoFocus={props.autoFocus}
       />
     </Box>
   );

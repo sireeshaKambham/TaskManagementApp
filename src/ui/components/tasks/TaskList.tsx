@@ -13,9 +13,11 @@ export const TaskList: React.FC = () => {
   const [searchKey, setSearchKey] = useState("");
   const { t } = useTranslation();
 
+  // Function to handle search key
   const handleSearch = (event) => {
     setSearchKey(event.target.value);
   };
+  
   const filteredTaskList = taskList.task.filter((item) =>
     item.title.toLowerCase().includes(searchKey.toLowerCase())
   );
@@ -36,6 +38,7 @@ export const TaskList: React.FC = () => {
         <BasicTextFields
           label={t("search_with_task_title")}
           onChange={handleSearch}
+          autoFocus={true}
         />
       </Grid>
       {filteredTaskList.length > 0 ? (

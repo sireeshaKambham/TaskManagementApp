@@ -8,7 +8,6 @@ const EditTask = () => {
       <Container maxWidth="xl">
         <MainNav />
       </Container>
-      <div>edit</div>
     </>
   );
 };
