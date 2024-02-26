@@ -6,7 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 interface IDialog {
   message?: string;
-  open?: boolean | undefined;
+  open: boolean;
   handleClose?: () => void;
   handleDeleteTask?: () => void;
   btnTextCancel?: string;

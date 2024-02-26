@@ -1,18 +1,23 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 import './App.css'
 import AppRoutes from './ui/components/routes/AppRoutes'
-import DataContext from './ui/components/context/Context'
+import {ContextStore} from './ui/components/context/ContextStore'
 import tasks from './ui/data/tasks.json'
 
 function App() {
-const [data,setData] = useState(tasks)
+
+useEffect(() => {
+  // Store initial data in local storage
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}, []);
+
   return (
     <>
     <Grid container>
-      <DataContext.Provider value={data}>
+      <ContextStore>
         <AppRoutes/>
-      </DataContext.Provider>
+      </ContextStore>
     </Grid>
     </>
   )

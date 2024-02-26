@@ -12,13 +12,4 @@ function getLocalStorage<T>(key: string): any | [] {
     }
     return [];
 }
-
-function getUserDetailsById(key: string, id: string): any {
-    const stringifiedValue = localStorage.getItem(key);
-    if (stringifiedValue) {
-        return JSON.parse(stringifiedValue).find((item: { linkId: string }) => item.linkId === id);
-    }
-    return undefined;
-}
-
-export { storeLocalStorage, getLocalStorage, getUserDetailsById};
+export { storeLocalStorage, getLocalStorage};

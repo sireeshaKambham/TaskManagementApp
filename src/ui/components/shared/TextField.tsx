@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 
 interface ITextField {
   label: string;
-  onChange?: () => void;
+  onChange?: any;
   placeholder?: string;
 }
 

@@ -1,6 +1,6 @@
 // Component to display task list
 import React, { useContext, useState } from "react";
-import DataContext from "../context/Context";
+import { TaskContext } from "../context/ContextStore";
 import IntroDivider from "../shared/Card";
 import Grid from "@mui/material/Grid";
 import MainNav from "../mainNav/MainNav";
@@ -8,18 +8,15 @@ import BasicTextFields from "../shared/TextField";
 import { useTranslation } from "react-i18next";
 import Container from "@mui/material/Container";
 
-interface ITaskList {
-  title: string;
-}
 export const TaskList: React.FC = () => {
-  const taskList = useContext(DataContext);
+  const taskList = useContext(TaskContext);
   const [searchKey, setSearchKey] = useState("");
   const { t } = useTranslation();
 
   const handleSearch = (event) => {
     setSearchKey(event.target.value);
   };
-  const filteredTaskList = taskList.filter((item) =>
+  const filteredTaskList = taskList.task.filter((item) =>
     item.title.toLowerCase().includes(searchKey.toLowerCase())
   );
 
@@ -34,7 +31,7 @@ export const TaskList: React.FC = () => {
         xs={12}
         md={12}
         className="search-box"
-        sx={{ display: "flex", justifyContent: "flex-end"}}
+        sx={{ display: "flex", justifyContent: "flex-end" }}
       >
         <BasicTextFields
           label={t("search_with_task_title")}
@@ -50,6 +47,7 @@ export const TaskList: React.FC = () => {
                 description={item.description}
                 deadline={item.deadline}
                 status={item.status}
+                id={item.id}
               />
             </Grid>
           ))}
